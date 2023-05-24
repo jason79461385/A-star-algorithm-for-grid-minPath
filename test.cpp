@@ -62,7 +62,7 @@ vector<Point> findShortestPath(vector<vector<int>>& grid, Point start, Point goa
 
         vector<Point> neighbors;
         neighbors.push_back({ currentPosition.x - 1, currentPosition.y });
-        neighbors.push_back({ currentPosition.x + 1, currentPosition.y });
+		        neighbors.push_back({ currentPosition.x + 1, currentPosition.y });
         neighbors.push_back({ currentPosition.x, currentPosition.y - 1 });
         neighbors.push_back({ currentPosition.x, currentPosition.y + 1 });
 
@@ -93,14 +93,15 @@ int main() {
     cin>>n;
     vector<vector<int>> grid(n,vector<int>(n));
     for(int i = 0; i <n;i++)
-	    for(int j = 0; j<n;j++)
-		    cin>>grid[i][j];
-	
+            for(int j = 0; j<n;j++)
+                    cin>>grid[i][j];
+
     Point start = {0, 0};
     Point goal = {n-1, n-1};
 
     vector<Point> shortestPath = findShortestPath(grid, start, goal);
 
+  /*
     if (shortestPath.empty()) {
         cout << "No path found." << endl;
     } else {
@@ -110,7 +111,11 @@ int main() {
         }
         cout << endl;
     }
-
+*/	
+  	int length = 0;
+  	for(const Point& point : shortestPath){
+    	length = length + grid[point.x][point.y];
+    }
+  	cout<<length;
     return 0;
 }
-
